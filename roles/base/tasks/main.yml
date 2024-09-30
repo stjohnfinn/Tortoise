@@ -1,0 +1,16 @@
+---
+
+- name: Install packages
+  dnf:
+    name:
+      - bat
+      - htop
+      - NetworkManager
+      - NetworkManager-tui
+      - vim
+      - ncdu
+      - tldr
+      - exa
+      - arp-scan
+      - wget
+      - lynis
