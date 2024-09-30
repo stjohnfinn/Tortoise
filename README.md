@@ -8,7 +8,18 @@ hardening practices.
 
 ## Usage
 
-Set your variables in `credentials.yml`
+Set your variables in `credentials.yml` (Ansible will read this when Vagrant 
+runs provisioning):
+
+```
+---
+
+root_password: <root_password>
+password: <password>
+username: <username>
+```
+
+then
 
 `vagrant up`
 
