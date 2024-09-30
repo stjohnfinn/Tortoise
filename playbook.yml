@@ -4,20 +4,6 @@
   become: yes
   vars_prompt:
   tasks:
-    - name: Install packages
-      dnf:
-        name:
-          - bat
-          - htop
-          - NetworkManager
-          - NetworkManager-tui
-          - vim
-          - ncdu
-          - tldr
-          - exa
-          - arp-scan
-          - wget
-          - lynis
     - name: Create secure user
       user:
         name: "{{ username }}"
@@ -30,3 +16,6 @@
       user:
         name: root
         password: "{{ root_password | password_hash }}"
+  roles:
+    - base
+    - hardening
