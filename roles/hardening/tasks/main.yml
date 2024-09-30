@@ -1,0 +1,38 @@
+---
+
+- name: Install NetworkManager service file
+  copy:
+    src: NetworkManager.override.conf
+    dest: /etc/systemd/system/NetworkManager.service.d/override.conf
+- name: Reload NetworkManager
+  service:
+    name: NetworkManager
+    state: reloaded
+
+################################################################################
+# In accordance with the RedHat Guide on hardening RHEL 9
+################################################################################
+- name: Update all packages
+  dnf:
+    name: "*"
+    state: latest
+- name: Enable firewalld
+  service:
+    name: firewalld
+    state: enabled
+- name: Start firewalld
+  service:
+    name: firewalld
+    state: started
+- name: Set unused services fact
+  set_fact:
+    unused_services:
+      - cups
+- name: Disable unused services
+  service:
+    state: disabled
+    name: "{{ unused_services }}"
+- name: Stop unused services
+  service:
+    state: stopped
+    name: "{{ unused_services }}"
