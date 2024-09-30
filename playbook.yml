@@ -2,6 +2,7 @@
 
 - hosts: all
   become: yes
+  vars_prompt:
   tasks:
     - name: Install packages
       dnf:
@@ -14,16 +15,18 @@
           - ncdu
           - tldr
           - exa
-          - gnome-extensions-app
-          - nodejs
           - arp-scan
           - wget
           - lynis
     - name: Create secure user
       user:
-        name: netrunner
+        name: "{{ username }}"
         password: "{{ password | password_hash }}"
         shell: /bin/bash
         groups:
           - wheel
         state: present
+    - name: Set root password
+      user:
+        name: root
+        password: "{{ root_password | password_hash }}"
