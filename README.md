@@ -6,6 +6,8 @@ instead of my physical host for doing sketchy things on the internet.
 This project also serves as an introduction to Linux (more specifically Fedora)
 hardening practices.
 
+Right now, I'm on page 12 of the RedHat guide.
+
 ## Usage
 
 Set your variables in `credentials.yml` (Ansible will read this when Vagrant 
@@ -37,7 +39,7 @@ https://www.hackthebox.com/hacker
 
 https://github.com/CISOfy/Lynis?tab=readme-ov-file
 
-https://docs.redhat.com/en-us/documentation/red_hat_enterprise_linux/8/pdf/security_hardening/Red_Hat_Enterprise_Linux-8-Security_hardening-en-US.pdf
+https://docs.redhat.com/en-us/documentation/red_hat_enterprise_linux/9/pdf/security_hardening/Red_Hat_Enterprise_Linux-9-Security_hardening-en-US.pdf
 
 https://overthewire.org/wargames/
 
