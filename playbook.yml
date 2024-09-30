@@ -1,0 +1,29 @@
+---
+
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install packages
+      dnf:
+        name:
+          - bat
+          - htop
+          - NetworkManager
+          - NetworkManager-tui
+          - vim
+          - ncdu
+          - tldr
+          - exa
+          - gnome-extensions-app
+          - nodejs
+          - arp-scan
+          - wget
+          - lynis
+    - name: Create secure user
+      user:
+        name: netrunner
+        password: "{{ password | password_hash }}"
+        shell: /bin/bash
+        groups:
+          - wheel
+        state: present
