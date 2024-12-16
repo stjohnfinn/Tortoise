@@ -6,8 +6,6 @@ instead of my physical host for doing sketchy things on the internet.
 This project also serves as an introduction to Linux (more specifically Fedora)
 hardening practices.
 
-Right now, I'm on page 12 of the RedHat guide.
-
 ## Usage
 
 Set your variables in `credentials.yml` (Ansible will read this when Vagrant 

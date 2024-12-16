@@ -9,8 +9,5 @@
       - NetworkManager-tui
       - vim
       - ncdu
-      - tldr
-      - exa
-      - arp-scan
       - wget
       - lynis

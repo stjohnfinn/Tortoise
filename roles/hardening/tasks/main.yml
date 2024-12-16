@@ -1,5 +1,9 @@
 ---
 
+- name: Create NetworkManager config directory
+  file:
+    path: /etc/systemd/system/NetworkManager.service.d/
+    state: directory
 - name: Install NetworkManager service file
   copy:
     src: NetworkManager.override.conf
@@ -19,20 +23,18 @@
 - name: Enable firewalld
   service:
     name: firewalld
-    state: enabled
-- name: Start firewalld
-  service:
-    name: firewalld
     state: started
-- name: Set unused services fact
-  set_fact:
-    unused_services:
-      - cups
+    enabled: yes
 - name: Disable unused services
   service:
-    state: disabled
-    name: "{{ unused_services }}"
-- name: Stop unused services
-  service:
     state: stopped
-    name: "{{ unused_services }}"
+    enabled: no
+    # set in vars/main.yml
+    name: "{{ item }}"
+  loop: "{{ unused_services }}"
+
+# Disabled because I can't get SSH to work with FIPS enabled
+# - name: Enable FIPS mode
+#   command: fips-mode-setup --enable
+# - name: Reboot for FIPS changes
+#   reboot:
